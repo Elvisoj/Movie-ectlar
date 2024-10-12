@@ -230,3 +230,68 @@ h1 {
     margin: 1rem;
   }
 }
+
+/* LOADING AMINATION*/
+.loading{
+  color: white;
+  margin-top: 30px;
+  font-size: 1.5rem;
+  position: relative;
+  left: -24px;
+}
+.load{
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: white;
+  position: relative;
+  opacity: 0;
+  animation: loadingBtn1 2s linear infinite;
+}
+.load::before{
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 16px;
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: white;
+  animation: loadingBtn1 2s linear infinite;
+}
+.load::after{
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 32px;
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: white;
+  animation: loadingBtn3 2s linear infinite;
+}
+
+@keyframes loadingBtn1 {
+  0%{
+   opacity: 1; 
+  }
+  35%{
+    opacity: 0;
+  }
+}
+@keyframes loadingBtn2 {
+  35%{
+   opacity: 1; 
+  }
+  70%{
+    opacity: 0;
+  }
+}
+@keyframes loadingBtn3 {
+  70%{
+   opacity: 1; 
+  }
+  100%{
+    opacity: 0;
+  }
+}
