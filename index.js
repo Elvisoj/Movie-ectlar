@@ -1,7 +1,7 @@
 let movies = [];
+const container = document.querySelector('.container');
 function getMovies(){
   const empty = document.querySelector('.template').content.cloneNode(true);
-  let container = document.querySelector('.container');
   
   let movieHtml = '';
   if(movies.length !== 0){
@@ -20,16 +20,15 @@ function getMovies(){
       `;
     })
     container.innerHTML =movieHtml;
+    input.value = '';
   } else {
     container.innerHTML =movieHtml;
     container.appendChild(empty);
   }
-  
-  //container = movies.length !== 0 ? container.innerHTML =movieHtml : container.appendChild(empty);
 }
 const getMovieData = async ()=>{
   try {
-    
+    container.innerHTML = `<div class="loading">Loading <span class="load"></span></div>`;
     const fetchMovie = await fetch(`https://www.omdbapi.com/?apikey=d652de87&s=${input.value}`,{
       headers: {
         Accept: "application/json"
@@ -50,7 +49,6 @@ const getMovieData = async ()=>{
     getMovies();
     console.log(err)
   }
-  
 }
 
 const input = document.querySelector('input');
@@ -59,6 +57,5 @@ const btn = document.querySelector('.btn');
 
 btn.addEventListener('click', ()=>{
   getMovieData();
-  input.value = '';
 });
 
